@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resumen Financiero</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 0;
+            color: #333;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: #f4f4f4;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        .footer {
+            margin-top: 20px;
+            font-size: 0.8em;
+            text-align: center;
+            color: #666;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <img alt="logo" src="https://upload.wikimedia.org/wikipedia/commons/b/b0/Stori_Logo_2023.svg" width="200px" height="200px">
+    <h2>Resumen Financiero</h2>
+    <p>Total balance is: <strong>${{.TotalAmount}}</strong></p>
+    <h3>Cantidad de transaciones por mes</h3>
+    <ul>
+        {{range $key, $value := .CountTransactionByMouth}}
+        <li>Mes : <strong>{{$key}}</strong> - Cantidad: <strong>{{$value}}</strong></li>
+        {{end}}
+    </ul>
+
+    <h3>Promedio de debito por mes</h3>
+    <ul>
+        {{range $key, $value := .AverageDebitAmountByMouth}}
+        <li>Mes : <strong>{{$key}}</strong> - monto promedio: <strong>${{$value}}</strong></li>
+        {{end}}
+    </ul>
+    <h3>Promedio de credito por mes</h3>
+    <ul>
+        {{range $key, $value := .AverageCreditAmountByMouth}}
+        <li>Mes : {{$key}} - monto promedio: <strong>${{$value}}</strong></li>
+        {{end}}
+    </ul>
+
+    <div class="footer">
+        Este es un correo automático, por favor no responder.
+    </div>
+</div>
+</body>
+</html>
